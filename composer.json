@@ -1,6 +1,6 @@
 {
   "name": "aimes/module-native-experience",
-  "description": "N/A",
+  "description": "Aimes to provide a more native-like experience for mobile users and generally an improved experience overall",
   "type": "magento2-module",
   "require": {
     "magento/framework": "*"
