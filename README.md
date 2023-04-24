@@ -40,7 +40,7 @@ Please install this module via Composer. This module is hosted on [Packagist][pa
 
 
 ## Planned Features & Improvements
-- [Hyva](hyva) support
+- [Hyva][hyva] support
 - [Share API](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share) to allow device native sharing capablities (if supported)
 - [Service worker](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API) to display a basic offline page
   - Possibly configurable via CMS page
