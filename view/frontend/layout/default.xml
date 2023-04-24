@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Rob Aimes - https://aimes.dev/
+ * https://github.com/robaimes
+ */
+ -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- TODO: Add config for snackbar, only remove default messages when necessary -->
+        <referenceBlock name="messages" remove="true"/>
+
+        <referenceContainer name="before.body.end">
+            <block name="native.snackbar"
+                   template="Aimes_NativeExperience::snackbar.phtml">
+                <arguments>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="snackbar" xsi:type="array">
+                                <item name="component" xsi:type="string">Magento_Ui/js/view/messages</item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
+            <block name="native.network.status"
+                   ifconfig="native_experience/network_status/enabled"
+                   template="Aimes_NativeExperience::online-status.phtml">
+                <arguments>
+                    <argument name="config" xsi:type="object">Aimes\NativeExperience\Scope\Config</argument>
+                </arguments>
+            </block>
+            <block name="native.battery.status"
+                   ifconfig="native_experience/battery/enabled"
+                   template="Aimes_NativeExperience::battery.phtml">
+                <arguments>
+                    <argument name="config" xsi:type="object">Aimes\NativeExperience\Scope\Config</argument>
+                    <argument name="battery_view_model" xsi:type="object">Aimes\NativeExperience\ViewModel\BatteryLevel</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

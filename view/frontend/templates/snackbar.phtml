@@ -1,0 +1,33 @@
+<?php
+/**
+ * Copyright © Rob Aimes - https://aimes.dev/
+ * https://github.com/robaimes
+ */
+
+use Aimes\NativeExperience\Scope\Config;
+use Magento\Framework\View\Element\Template;
+use Magento\Framework\Escaper;
+use Magento\Framework\View\Helper\SecureHtmlRenderer;
+
+/** @var Template $block */
+/** @var Escaper $escaper */
+/** @var SecureHtmlRenderer $secureRenderer */
+/** @var Config $config */
+$config = $block->getConfig();
+?>
+<div id="global-snackbar" data-bind="scope: 'snackbar'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <script type="text/x-magento-init">
+        {
+            "#global-snackbar": {
+                "Magento_Ui/js/core/app": {
+                    "components": {
+                        "snackbar": {
+                            "component": "Aimes_NativeExperience/js/view/snackbar"
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</div>

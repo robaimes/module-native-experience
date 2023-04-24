@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Rob Aimes - https://aimes.dev/
+ * https://github.com/robaimes
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="native_experience"
+                 translate="label"
+                 sortOrder="25"
+                 showInDefault="1"
+                 showInWebsite="1"
+                 showInStore="1">
+            <label>Native Experience</label>
+            <tab>general</tab>
+            <resource>Aimes_NativeExperience::config</resource>
+            <group id="network_status" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Network Status</label>
+                <field id="enabled"
+                       translate="label comment"
+                       type="select"
+                       sortOrder="10"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1"
+                       canRestore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Notify customers when their network status changes to 'offline'</comment>
+                </field>
+                <field id="online_message"
+                       translate="label"
+                       type="text"
+                       sortOrder="20"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1"
+                       canRestore="1">
+                    <label>Online Message</label>
+                    <depends>
+                        <field id="native_experience/network_status/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="offline_message"
+                       translate="label"
+                       type="text"
+                       sortOrder="30"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1"
+                       canRestore="1">
+                    <label>Offline Message</label>
+                    <depends>
+                        <field id="native_experience/network_status/enabled">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="battery" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Battery Status</label>
+                <field id="enabled"
+                       translate="label comment"
+                       type="select"
+                       sortOrder="10"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1"
+                       canRestore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable battery API features</comment>
+                </field>
+                <field id="low_level_warning"
+                       translate="label comment"
+                       type="text"
+                       sortOrder="20"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1"
+                       canRestore="1">
+                    <label>Online Message</label>
+                    <comment>When battery level is less than or equal to this percentage, give guest users a chance to save their quote by creating an account</comment>
+                    <validate>validate-zero-or-greater validate-number</validate>
+                    <depends>
+                        <field id="native_experience/battery/enabled">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,54 @@
+<?php
+
+/**
+ * Copyright © Rob Aimes - https://aimes.dev/
+ * https://github.com/robaimes
+ */
+
+use Aimes\NativeExperience\Scope\Config;
+use Magento\Framework\View\Element\Template;
+use Magento\Framework\Escaper;
+use Magento\Framework\View\Helper\SecureHtmlRenderer;
+
+/** @var Template $block */
+/** @var Escaper $escaper */
+/** @var SecureHtmlRenderer $secureRenderer */
+/** @var Config $config */
+$config = $block->getConfig();
+?>
+<script>
+    require([
+        'Magento_Customer/js/customer-data',
+    ], function (
+        customerData
+    ) {
+        if (!'onLine' in navigator) {
+            return;
+        }
+
+        const isOnline = function (e) {
+            customerData.set('messages', {
+                messages: [{
+                    text: '<?= $escaper->escapeJs($config->getNetworkStatusOnlineMessage()) ?>',
+                    type: 'success',
+                }],
+            });
+        };
+
+        const isOffline = function (e) {
+            customerData.set('messages', {
+                messages: [{
+                    text: '<?= $escaper->escapeJs($config->getNetworkStatusOfflineMessage()) ?>',
+                    type: 'error',
+                }],
+            });
+        };
+
+        if (!navigator.onLine) {
+            isOffline();
+        }
+
+        window.addEventListener('online', isOnline);
+        window.addEventListener('offline', isOffline);
+    });
+</script>

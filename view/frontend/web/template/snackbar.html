@@ -1,0 +1,20 @@
+<!--
+/**
+ * Copyright © Rob Aimes - https://aimes.dev/
+ * https://github.com/robaimes
+ */
+-->
+<div data-role="global-snackbar" class="messages">
+    <fastForEach args="data: messages, as: 'message'">
+        <div class="message"
+             attr="{
+                 'data-timestamp': $data.timestamp,
+                 'data-lifetime': $data.lifetime
+             }"
+             data-bind="class: $data.type">
+            <span html="$parent.sanitizeMessage($data.message)"></span>
+            <a class="action-cancel"
+               click="$parent.removeMessage.bind($parent, $data)"></a>
+        </div>
+    </fastForEach>
+</div>

@@ -1,0 +1,78 @@
+/**
+ * Copyright © Rob Aimes - https://aimes.dev/
+ * https://github.com/robaimes
+ */
+
+@snackbar-message-spacing: 0.75rem;
+
+[data-role="global-snackbar"] {
+  bottom: 0;
+  max-width: 300px;
+  position: fixed;
+  right: 10px;
+  z-index: 999;
+
+  .message {
+    align-items: center;
+    display: flex;
+    padding: @snackbar-message-spacing;
+    position: relative;
+
+    > *:first-child:before {
+      content: none;
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      font-family: 'luma-icons';
+      font-size: 24px;
+      line-height: 1;
+      margin-right: @snackbar-message-spacing;
+    }
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      transform: scaleX(1);
+      transform-origin: 0 50%;
+      animation-name: bottom-border-timer;
+      animation-duration: 10s;
+      animation-timing-function: linear;
+      border-bottom: 2px solid black;
+    }
+
+    &.success:before {
+      content: @icon-success;
+    }
+
+    &.error:before {
+      content: @icon-error;
+    }
+
+    &.warning:before {
+      content: @icon-warning;
+    }
+  }
+
+  .action-cancel {
+    cursor: pointer;
+    margin-left: @snackbar-message-spacing;
+    text-decoration: none;
+    text-underline: none;
+
+    &:after {
+      content: @icon-remove;
+      font-family: @icons__font-name;
+    }
+  }
+}
+
+@keyframes bottom-border-timer {
+  from {transform: scaleX(1);}
+  to {transform: scaleX(0);}
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Rob Aimes - https://aimes.dev/
+ * https://github.com/robaimes
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <native_experience>
+            <network_status>
+                <enabled>1</enabled>
+                <offline_message>You appear to have lost network connection, you may experience degraded site performance</offline_message>
+                <online_message>Your network connection has been restored</online_message>
+            </network_status>
+            <battery>
+                <enabled>1</enabled>
+                <low_level_warning>20</low_level_warning>
+            </battery>
+        </native_experience>
+    </default>
+</config>
