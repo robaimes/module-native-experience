@@ -4,16 +4,13 @@
  * https://github.com/robaimes
  */
 
-use Aimes\NativeExperience\Scope\Config;
-use Magento\Framework\View\Element\Template;
+use Magento\Framework\View\Element\Messages;
 use Magento\Framework\Escaper;
 use Magento\Framework\View\Helper\SecureHtmlRenderer;
 
-/** @var Template $block */
+/** @var Messages $block */
 /** @var Escaper $escaper */
 /** @var SecureHtmlRenderer $secureRenderer */
-/** @var Config $config */
-$config = $block->getConfig();
 ?>
 <div id="global-snackbar" data-bind="scope: 'snackbar'">
     <!-- ko template: getTemplate() --><!-- /ko -->

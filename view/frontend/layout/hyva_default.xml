@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Rob Aimes - https://aimes.dev/
+ * https://github.com/robaimes
+ */
+ -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- Add snackbar JS -->
+        <referenceContainer name="before.body.end">
+            <block name="native.snackbar"
+                   template="Aimes_NativeExperience::snackbar.phtml"
+                   after="-"/>
+        </referenceContainer>
+
+        <!-- Change templates to use Hyva supported JavaScript and not default require -->
+        <referenceBlock name="native.network.status" template="Aimes_NativeExperience::hyva/online-status.phtml"/>
+        <referenceBlock name="native.battery.status" template="Aimes_NativeExperience::hyva/battery.phtml"/>
+    </body>
+</page>

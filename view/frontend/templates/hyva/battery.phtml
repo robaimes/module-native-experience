@@ -1,0 +1,50 @@
+<?php
+
+/**
+ * Copyright © Rob Aimes - https://aimes.dev/
+ * https://github.com/robaimes
+ */
+
+use Aimes\NativeExperience\Scope\Config;
+use Aimes\NativeExperience\ViewModel\BatteryLevel;
+use Magento\Framework\View\Element\Template;
+use Magento\Framework\Escaper;
+use Magento\Framework\View\Helper\SecureHtmlRenderer;
+
+/** @var Template $block */
+/** @var Escaper $escaper */
+/** @var SecureHtmlRenderer $secureRenderer */
+/** @var Config $config */
+/** @var BatteryLevel $batteryViewModel */
+$config = $block->getConfig();
+$batteryViewModel = $block->getBatteryViewModel();
+
+if ($batteryViewModel->isCustomerLoggedIn()) {
+    return;
+}
+?>
+<script>
+    (function () {
+        if (!'getBattery' in navigator) {
+            return;
+        }
+
+        navigator.getBattery().then(function (battery) {
+            const warnBatteryLevelLow = function () {
+                const lowLevelWarning = <?= $escaper->escapeJs($config->getBatteryLowLevelWarning()) ?>;
+                const currentLevel = battery.level * 100;
+
+                if (currentLevel > lowLevelWarning) {
+                    return;
+                }
+
+                window.dispatchMessages && window.dispatchMessages([{
+                    type: 'warning',
+                    text: '<?= $escaper->escapeJs($batteryViewModel->getGuestBatteryMessage()) ?>',
+                }], 20000);
+            };
+
+            battery.addEventListener('levelchange', warnBatteryLevelLow);
+        });
+    })()
+</script>
