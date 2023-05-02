@@ -1,0 +1,11 @@
+/**
+ * Copyright © Rob Aimes - https://aimes.dev/
+ * https://github.com/robaimes
+ */
+
+#messages {
+    @apply fixed
+           bottom-0
+           right-0
+           max-w-sm;
+}

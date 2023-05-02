@@ -1,0 +1,26 @@
+<?php
+/**
+ * Copyright © Rob Aimes - https://aimes.dev/
+ * https://github.com/robaimes
+ */
+
+use Magento\Framework\View\Element\Messages;
+use Magento\Framework\Escaper;
+use Magento\Framework\View\Helper\SecureHtmlRenderer;
+
+/** @var Messages $block */
+/** @var Escaper $escaper */
+/** @var SecureHtmlRenderer $secureRenderer */
+?>
+<script>
+    (() => {
+        const origDispatchMessages = window.dispatchMessages;
+        const defaultDelay = 10000;
+
+        window.dispatchMessages = function(messages, hideAfter) {
+            hideAfter = hideAfter || defaultDelay;
+
+            origDispatchMessages(messages, hideAfter);
+        }
+    })()
+</script>

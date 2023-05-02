@@ -1,0 +1,46 @@
+<?php
+
+/**
+ * Copyright © Rob Aimes - https://aimes.dev/
+ * https://github.com/robaimes
+ */
+
+use Aimes\NativeExperience\Scope\Config;
+use Magento\Framework\View\Element\Template;
+use Magento\Framework\Escaper;
+use Magento\Framework\View\Helper\SecureHtmlRenderer;
+
+/** @var Template $block */
+/** @var Escaper $escaper */
+/** @var SecureHtmlRenderer $secureRenderer */
+/** @var Config $config */
+$config = $block->getConfig();
+?>
+<script>
+    (function () {
+        if (!'onLine' in navigator) {
+            return;
+        }
+
+        const isOnline = function (e) {
+            window.dispatchMessages && window.dispatchMessages([{
+                type: 'success',
+                text: '<?= $escaper->escapeJs($config->getNetworkStatusOnlineMessage()) ?>',
+            }]);
+        };
+
+        const isOffline = function (e) {
+            window.dispatchMessages && window.dispatchMessages([{
+                type: 'error',
+                text: '<?= $escaper->escapeJs($config->getNetworkStatusOfflineMessage()) ?>',
+            }]);
+        };
+
+        if (!navigator.onLine) {
+            isOffline();
+        }
+
+        window.addEventListener('online', isOnline);
+        window.addEventListener('offline', isOffline);
+    })()
+</script>

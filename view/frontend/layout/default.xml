@@ -8,22 +8,11 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
-        <!-- TODO: Add config for snackbar, only remove default messages when necessary -->
-        <referenceBlock name="messages" remove="true"/>
+        <!-- Change default messages template to use snackbar template -->
+        <referenceBlock name="messages" template="Aimes_NativeExperience::snackbar.phtml"/>
 
+        <!-- Add scripts to body for each feature -->
         <referenceContainer name="before.body.end">
-            <block name="native.snackbar"
-                   template="Aimes_NativeExperience::snackbar.phtml">
-                <arguments>
-                    <argument name="jsLayout" xsi:type="array">
-                        <item name="components" xsi:type="array">
-                            <item name="snackbar" xsi:type="array">
-                                <item name="component" xsi:type="string">Magento_Ui/js/view/messages</item>
-                            </item>
-                        </item>
-                    </argument>
-                </arguments>
-            </block>
             <block name="native.network.status"
                    ifconfig="native_experience/network_status/enabled"
                    template="Aimes_NativeExperience::online-status.phtml">
