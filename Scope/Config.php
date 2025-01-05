@@ -95,17 +95,4 @@ class Config implements ArgumentInterface
             ScopeInterface::SCOPE_STORE
         );
     }
-
-    /**
-     * Get low level warning message
-     *
-     * @return string
-     */
-    public function getBatteryWarningMessage(): string
-    {
-        return $this->scopeConfig->getValue(
-            self::XML_PATH_NATIVE_EXPERIENCE_BATTERY_LOW_LEVEL_MESSAGE,
-            ScopeInterface::SCOPE_STORE
-        );
-    }
 }

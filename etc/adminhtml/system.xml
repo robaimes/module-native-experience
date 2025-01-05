@@ -15,7 +15,7 @@
                  showInWebsite="1"
                  showInStore="1">
             <label>Native Experience</label>
-            <tab>general</tab>
+            <tab>aimes</tab>
             <resource>Aimes_NativeExperience::config</resource>
             <group id="network_status" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Network Status</label>
@@ -80,7 +80,7 @@
                        showInWebsite="1"
                        showInStore="1"
                        canRestore="1">
-                    <label>Online Message</label>
+                    <label>Low Battery Percentage</label>
                     <comment>When battery level is less than or equal to this percentage, give guest users a chance to save their quote by creating an account</comment>
                     <validate>validate-zero-or-greater validate-number</validate>
                     <depends>

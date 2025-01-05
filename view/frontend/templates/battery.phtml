@@ -23,34 +23,13 @@ if ($batteryViewModel->isCustomerLoggedIn()) {
     return;
 }
 ?>
-<script>
-    require([
-        'Magento_Customer/js/customer-data',
-    ], function (
-        customerData
-    ) {
-        if (!'getBattery' in navigator) {
-            return;
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Aimes_NativeExperience/js/battery-status": {
+                "low_battery_percentage": "<?= $escaper->escapeJs($config->getBatteryLowLevelWarning()) ?>",
+                "low_battery_message": "<?= $escaper->escapeJs($batteryViewModel->getGuestBatteryMessage()) ?>"
+            }
         }
-
-        navigator.getBattery().then(function (battery) {
-            const warnBatteryLevelLow = function () {
-                const lowLevelWarning = <?= $escaper->escapeJs($config->getBatteryLowLevelWarning()) ?>;
-                const currentLevel = battery.level * 100;
-
-                if (currentLevel > lowLevelWarning) {
-                    return;
-                }
-
-                customerData.set('messages', {
-                    messages: [{
-                        text: '<?= $escaper->escapeJs($batteryViewModel->getGuestBatteryMessage()) ?>',
-                        type: 'warning',
-                    }],
-                });
-            };
-
-            battery.addEventListener('levelchange', warnBatteryLevelLow);
-        });
-    });
+    }
 </script>

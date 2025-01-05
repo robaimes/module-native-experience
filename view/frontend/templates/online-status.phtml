@@ -16,39 +16,13 @@ use Magento\Framework\View\Helper\SecureHtmlRenderer;
 /** @var Config $config */
 $config = $block->getConfig();
 ?>
-<script>
-    require([
-        'Magento_Customer/js/customer-data',
-    ], function (
-        customerData
-    ) {
-        if (!'onLine' in navigator) {
-            return;
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Aimes_NativeExperience/js/online-status": {
+                "online_message": "<?= $escaper->escapeJs($config->getNetworkStatusOnlineMessage()) ?>",
+                "offline_message": "<?= $escaper->escapeJs($config->getNetworkStatusOfflineMessage()) ?>"
+            }
         }
-
-        const isOnline = function (e) {
-            customerData.set('messages', {
-                messages: [{
-                    text: '<?= $escaper->escapeJs($config->getNetworkStatusOnlineMessage()) ?>',
-                    type: 'success',
-                }],
-            });
-        };
-
-        const isOffline = function (e) {
-            customerData.set('messages', {
-                messages: [{
-                    text: '<?= $escaper->escapeJs($config->getNetworkStatusOfflineMessage()) ?>',
-                    type: 'error',
-                }],
-            });
-        };
-
-        if (!navigator.onLine) {
-            isOffline();
-        }
-
-        window.addEventListener('online', isOnline);
-        window.addEventListener('offline', isOffline);
-    });
+    }
 </script>

@@ -1,19 +1,19 @@
 {
-  "name": "aimes/module-native-experience",
-  "description": "Aimes to provide a more native-like experience for mobile users and generally an improved experience overall",
-  "type": "magento2-module",
-  "require": {
-    "magento/framework": "*"
-  },
-  "license": [
-    "GPL-3.0-or-later"
-  ],
-  "autoload": {
-    "files": [
-      "registration.php"
+    "name": "aimes/module-native-experience",
+    "description": "Aimes to provide a more native-like experience for mobile users and generally an improved experience overall",
+    "type": "magento2-module",
+    "require": {
+        "aimes/magento2-module-substratum": "^1.0"
+    },
+    "license": [
+        "GPL-3.0-or-later"
     ],
-    "psr-4": {
-      "Aimes\\NativeExperience\\": ""
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Aimes\\NativeExperience\\": ""
+        }
     }
-  }
 }

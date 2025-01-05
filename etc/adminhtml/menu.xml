@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Rob Aimes - https://aimes.dev/
+ * https://github.com/robaimes
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <!-- Substratum menu items -->
+        <add id="Aimes_NativeExperience::native_experience_title"
+             title="Native Experience"
+             translate="title"
+             module="Aimes_NativeExperience"
+             parent="Aimes_Substratum::substratum_menu"
+             sortOrder="50"
+             resource="Aimes_NativeExperience::config"
+             dependsOnModule="Aimes_Substratum"/>
+
+        <add id="Aimes_NativeExperience::configuration"
+             title="Configuration"
+             translate="title"
+             module="Aimes_NativeExperience"
+             parent="Aimes_NativeExperience::native_experience_title"
+             resource="Aimes_NativeExperience::config"
+             sortOrder="10"
+             action="adminhtml/system_config/edit/section/native_experience"
+             dependsOnModule="Aimes_Substratum"/>
+    </menu>
+</config>
