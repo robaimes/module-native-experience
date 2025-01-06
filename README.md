@@ -3,6 +3,7 @@
 !["Supported Magento Version"][magento-badge] !["Latest Release"][release-badge]
 
 * Compatible with _Magento Open Source_ and _Adobe Commerce_ `2.4.x`
+* Compatible with [Hyvä Themes][hyva]
 
 ## Features
 In a few words, this module aims to provide a more native-like experience for mobile users and generally an improved experience overall.
@@ -40,7 +41,6 @@ Please install this module via Composer. This module is hosted on [Packagist][pa
 
 
 ## Planned Features & Improvements
-- [Hyva][hyva] support
 - [Share API](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share) to allow device native sharing capablities (if supported)
 - [Service worker](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API) to display a basic offline page
   - Possibly configurable via CMS page
