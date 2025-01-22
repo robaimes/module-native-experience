@@ -56,13 +56,14 @@ define([
          * Render messages from mage-messages cookie
          */
         initCookieMessages: function () {
+            const self = this;
             const cookieMessages = _.unique(
                 $.cookieStorage.get('mage-messages'),
                 'text'
             );
 
             cookieMessages.forEach(function (messageData) {
-                this.addMessage(messageData.text, messageData.type);
+                self.addMessage(messageData.text, messageData.type);
             });
 
             $.mage.cookies.set('mage-messages', '', {
